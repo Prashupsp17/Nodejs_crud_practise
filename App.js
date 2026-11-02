@@ -30,21 +30,23 @@ router.post('app/create', async (req, res) => {
   }
 });
 
-router.get("app/getUsers",aysnc(req,res) => {
-  try{ 
-     const users = await User.find();
-     res.status(200).json({
-       message:"users fetched successfully",
-       data:users;
-     }) 
+router.get("/getUsers", async (req, res) => {
+  try {
+      const users = await User.find();
 
-  }catch(err){
-    console.log(err);
-    res.status(500).json({
-      message:err.message
-    })
+      res.status(200).json({
+          message: "Users fetched successfully",
+          data: users
+      });
+
+  } catch (err) {
+      console.log(err);
+
+      res.status(500).json({
+          message: err.message
+      });
   }
-})
+});
 
 
 router.get("app/getUsers/:id",async(req,res) => {
